@@ -1,116 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            height: 100vh;
-            /* align-items: space-around; */
-        }
-
-        h1 {
-            flex-basis: 100%;
-            font-size: 100px;
-            /* background-color: rosybrown; */
-            text-align: center;
-        }
-
-        .computer,
-        .player {
-
-            height: 250px;
-            /* width: 200px; */
-            /* background-color: forestgreen; */
-            flex-basis: 40%;
-            border: 1px solid #ccc;
-            background-image: url('images/none.jpg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        h2,
-        p {
-            flex-basis: 40%;
-            margin-left: 50%;
-            text-align: center;
-        }
-
-        .options {
-            flex-basis: 40%;
-            margin-left: 50%;
-
-            height: 140px;
-
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            /* background-color: goldenrod; */
-        }
-
-        img.option {
-            width: 100px;
-            height: 100px;
-            border: 1px solid #ccc;
-
-        }
-
-        img.option:hover {
-
-            border: 1px solid #333;
-
-        }
-
-        img.option:active {
-
-            border: 2px solid #000;
-
-        }
-    </style>
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <h1 class="scores"></h1>
-
-
-
-    <div class="computer">
-
-    </div>
-    <div class="player">
-
-    </div>
+    <h1 id="scoreboard">0 - 0</h1>
+    <div id="computer"></div>
+    <div id="player"></div>
     <h2>Choose wisely:</h2>
-    <div class="options">
-        <div class="rock">
-            <img class="option" src="images/rock.jpg" alt="">
+    <div id="options">
+		<div id="paper" value='0'>
+            <img class="option" src="images/0.jpg" alt="">
         </div>
-        <div class="paper">
-            <img class="option" src="images/paper.jpg" alt="">
+        <div id="rock" value='1'>
+            <img class="option" src="images/1.jpg" alt="">
         </div>
-        <div class="scissors">
-            <img class="option" src="images/scissors.jpg" alt="">
+        <div id="scissors" value='2'>
+            <img class="option" src="images/2.jpg" alt="">
         </div>
-
     </div>
     <p> I want to always win
-        <input type="checkbox" onclick="winning()">
+        <input type="checkbox" id="opt_alwaysWin">
     </p>
     <script src="main.js"></script>
 </body>
-
 </html>
