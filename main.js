@@ -11,12 +11,12 @@ const result = [
 	[1,2,0]
 ];
 	
-var userScore = 0, compScore = 0;
-var random = Alea(new Date());//I replaced random function to make it more pr0; If you replace new Date() with static string it will always generate same result!
+let userScore = 0, compScore = 0;
+let random = Alea(new Date());//I replaced random function to make it more pr0; If you replace new Date() with static string it will always generate same result!
 
 elem_playButtons.forEach(function applyEvent(item){
 	item.addEventListener('click', function play(){
-		var userChoice = parseInt(this.getAttribute('value'));
+		let userChoice = parseInt(this.getAttribute('value'));
 		
 		do {
 			var compChoice = toRange(random(), 0, 2);
