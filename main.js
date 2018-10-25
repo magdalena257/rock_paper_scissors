@@ -3,8 +3,9 @@ const elem_computerChoice = document.querySelector('#computer');
 const elem_userChoice = document.querySelector('#player');
 const elem_scoreboard = document.querySelector('#scoreboard');
 const elem_opt_alwaysWin = document.querySelector('#opt_alwaysWin');
+const elem_opt_useAlea = document.querySelector('#opt_useAlea');
 
-//0 tie, 1 win, 2 lose; Who needs army of IFs or ugly switch..case :>
+//0 tie, 1 win, 2 lose
 const result = [
 	[0,1,2],
 	[2,0,1],
@@ -12,26 +13,34 @@ const result = [
 ];
 	
 let userScore = 0, compScore = 0;
-let random = Alea(new Date());//I replaced random function to make it more pr0; If you replace new Date() with static string it will always generate same result!
+let rand = Alea(new Date());
 
 elem_playButtons.forEach(function applyEvent(item){
 	item.addEventListener('click', function play(){
 		let userChoice = parseInt(this.getAttribute('value'));
+		let compChoice;
 		
 		do {
-			var compChoice = toRange(random(), 0, 2);
+			let random;
+			if (elem_opt_useAlea.checked){
+				random = rand();
+			}else{
+				random = Math.random();
+			}
+			compChoice = toRange(random, 0, 2);
 			
 		}while(result[userChoice][compChoice] != 1 && elem_opt_alwaysWin.checked);
 		
-		elem_userChoice.style.backgroundImage = 'url("images/'+userChoice+'.jpg")';
-		elem_computerChoice.style.backgroundImage = 'url("images/'+compChoice+'.jpg")';
-		
 		if (result[userChoice][compChoice] == 1){
 			userScore++;
-		}else if (result[userChoice][compChoice] == 2){
+		}
+		
+		if (result[userChoice][compChoice] == 2){
 			compScore++;
 		}
 		
+		elem_userChoice.style.backgroundImage = 'url("images/'+userChoice+'.jpg")';
+		elem_computerChoice.style.backgroundImage = 'url("images/'+compChoice+'.jpg")';
 		elem_scoreboard.textContent = compScore+' - '+userScore;
 		
 	});
